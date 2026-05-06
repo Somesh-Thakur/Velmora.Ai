@@ -30,12 +30,13 @@ export async function streamFromProxy(endpoint, payload, onToken) {
       const trimmed = line.trim();
       if (!trimmed || trimmed === "data: [DONE]") continue;
       const data = trimmed.startsWith("data:") ? trimmed.slice(5).trim() : trimmed;
+      if (!data || data === "[DONE]") continue;
       try {
         const parsed = JSON.parse(data);
-        const token = parsed.choices?.[0]?.delta?.content || parsed.token || parsed.content || "";
+        const token = parsed.choices?.[0]?.delta?.content ?? parsed.token ?? parsed.content ?? "";
         if (token) onToken(token);
       } catch {
-        onToken(data);
+        // Skip lines that are not valid JSON (partial chunks, comments, etc.)
       }
     }
   }
