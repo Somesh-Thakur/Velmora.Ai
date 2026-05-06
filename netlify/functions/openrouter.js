@@ -1,5 +1,5 @@
 exports.handler = async (event, context) => {
-  console.log("OpenRouter function called");
+  console.log("OpenRouter function called:", event.httpMethod);
   
   if (event.httpMethod !== "POST") {
     return {
@@ -18,7 +18,20 @@ exports.handler = async (event, context) => {
   }
 
   try {
-    const { model, messages, system } = JSON.parse(event.body);
+    let payload;
+    try {
+      payload = JSON.parse(event.body || "{}");
+    } catch (e) {
+      console.error("Failed to parse body:", event.body);
+      return {
+        statusCode: 400,
+        body: JSON.stringify({ error: "Invalid JSON in request body" })
+      };
+    }
+
+    const { model, messages, system } = payload;
+
+    console.log("Sending to OpenRouter:", { model, messageCount: messages?.length });
 
     const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
       method: "POST",
@@ -28,22 +41,26 @@ exports.handler = async (event, context) => {
       },
       body: JSON.stringify({
         model: model || "deepseek-chat",
-        messages,
-        system,
+        messages: messages || [],
+        system: system,
         stream: true
       })
     });
 
+    console.log("OpenRouter response status:", response.status);
+
     if (!response.ok) {
       const errorText = await response.text();
-      console.error("OpenRouter API error:", errorText);
+      console.error("OpenRouter API error:", response.status, errorText);
       return {
         statusCode: response.status,
-        body: JSON.stringify({ error: `OpenRouter error: ${response.statusText}` })
+        body: JSON.stringify({ error: errorText || response.statusText })
       };
     }
 
-    const buffer = await response.arrayBuffer();
+    const text = await response.text();
+    console.log("OpenRouter response length:", text.length);
+    
     return {
       statusCode: 200,
       headers: {
@@ -51,10 +68,10 @@ exports.handler = async (event, context) => {
         "Cache-Control": "no-cache",
         "Connection": "keep-alive"
       },
-      body: Buffer.from(buffer).toString()
+      body: text
     };
   } catch (error) {
-    console.error("OpenRouter function error:", error);
+    console.error("OpenRouter function error:", error.message);
     return {
       statusCode: 500,
       body: JSON.stringify({ error: error.message })
