@@ -6,7 +6,7 @@ export const API_CONFIG = {
     },
     openrouter: {
       endpoint: "/.netlify/functions/openrouter",
-      model: "deepseek-chat"
+      model: "deepseek/deepseek-chat"
     },
     huggingface: {
       endpoint: "/.netlify/functions/huggingface",

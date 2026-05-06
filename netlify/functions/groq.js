@@ -33,6 +33,11 @@ exports.handler = async (event, context) => {
 
     console.log("Sending to Groq:", { model, messageCount: messages?.length });
 
+    // Groq uses OpenAI format: system prompt must be first message in array
+    const allMessages = system
+      ? [{ role: "system", content: system }, ...(messages || [])]
+      : (messages || []);
+
     const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
       method: "POST",
       headers: {
@@ -41,8 +46,7 @@ exports.handler = async (event, context) => {
       },
       body: JSON.stringify({
         model: model || "llama-3.3-70b-versatile",
-        messages: messages || [],
-        system: system,
+        messages: allMessages,
         stream: true
       })
     });

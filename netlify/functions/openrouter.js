@@ -1,5 +1,6 @@
 exports.handler = async (event, context) => {
   console.log("OpenRouter function called:", event.httpMethod);
+  console.log("Request body:", event.body);
   
   if (event.httpMethod !== "POST") {
     return {
@@ -21,30 +22,49 @@ exports.handler = async (event, context) => {
     let payload;
     try {
       payload = JSON.parse(event.body || "{}");
+      console.log("Parsed payload:", JSON.stringify(payload, null, 2));
     } catch (e) {
       console.error("Failed to parse body:", event.body);
       return {
         statusCode: 400,
-        body: JSON.stringify({ error: "Invalid JSON in request body" })
+        body: JSON.stringify({ error: "Invalid JSON in request body", body: event.body })
       };
     }
 
     const { model, messages, system } = payload;
 
-    console.log("Sending to OpenRouter:", { model, messageCount: messages?.length });
+    if (!messages || !Array.isArray(messages)) {
+      console.error("Invalid messages:", messages);
+      return {
+        statusCode: 400,
+        body: JSON.stringify({ error: "messages must be an array" })
+      };
+    }
+
+    console.log("Sending to OpenRouter:", { model, messageCount: messages.length });
+
+    // OpenRouter uses OpenAI format: system prompt must be first message in array
+    const allMessages = system
+      ? [{ role: "system", content: system }, ...messages]
+      : messages;
+
+    const requestBody = {
+      model: model || "deepseek/deepseek-chat",
+      messages: allMessages,
+      stream: true
+    };
+
+    console.log("OpenRouter request body:", JSON.stringify(requestBody, null, 2));
 
     const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
       method: "POST",
       headers: {
         "Authorization": `Bearer ${openrouterKey}`,
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        "HTTP-Referer": "https://velmoraai.netlify.app",
+        "X-Title": "Velmora AI"
       },
-      body: JSON.stringify({
-        model: model || "deepseek-chat",
-        messages: messages || [],
-        system: system,
-        stream: true
-      })
+      body: JSON.stringify(requestBody)
     });
 
     console.log("OpenRouter response status:", response.status);
@@ -54,7 +74,7 @@ exports.handler = async (event, context) => {
       console.error("OpenRouter API error:", response.status, errorText);
       return {
         statusCode: response.status,
-        body: JSON.stringify({ error: errorText || response.statusText })
+        body: JSON.stringify({ error: errorText || response.statusText, status: response.status })
       };
     }
 
@@ -71,10 +91,10 @@ exports.handler = async (event, context) => {
       body: text
     };
   } catch (error) {
-    console.error("OpenRouter function error:", error.message);
+    console.error("OpenRouter function error:", error.message, error.stack);
     return {
       statusCode: 500,
-      body: JSON.stringify({ error: error.message })
+      body: JSON.stringify({ error: error.message, stack: error.stack })
     };
   }
 };
