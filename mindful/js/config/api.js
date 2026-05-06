@@ -1,15 +1,15 @@
 export const API_CONFIG = {
   providers: {
     groq: {
-      endpoint: "/api/groq",
+      endpoint: "/.netlify/functions/groq",
       model: "llama-3.3-70b-versatile"
     },
     openrouter: {
-      endpoint: "/api/openrouter",
+      endpoint: "/.netlify/functions/openrouter",
       model: "deepseek-chat"
     },
     huggingface: {
-      endpoint: "/api/huggingface",
+      endpoint: "/.netlify/functions/huggingface",
       model: "mistralai/Mistral-7B-Instruct-v0.3"
     }
   },
