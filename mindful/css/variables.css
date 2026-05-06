@@ -1,0 +1,30 @@
+:root {
+  --color-bg: #080B12;
+  --color-bg-secondary: #0D1117;
+  --color-bg-tertiary: #111827;
+  --color-panel: #131C28;
+  --color-accent: #00D4FF;
+  --color-text: #FFFFFF;
+  --color-muted: rgba(255,255,255,0.55);
+  --color-border: rgba(255,255,255,0.08);
+  --color-border-strong: rgba(255,255,255,0.14);
+  --color-shadow: rgba(0,0,0,0.48);
+  --font-heading: "Instrument Serif", Georgia, serif;
+  --font-body: "Inter", "DM Sans", Arial, sans-serif;
+  --radius-xs: 8px;
+  --radius-sm: 12px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
