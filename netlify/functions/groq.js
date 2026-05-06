@@ -1,15 +1,24 @@
-export default async (request, context) => {
-  if (request.method !== "POST") {
-    return new Response("Method not allowed", { status: 405 });
+exports.handler = async (event, context) => {
+  console.log("Groq function called");
+  
+  if (event.httpMethod !== "POST") {
+    return {
+      statusCode: 405,
+      body: JSON.stringify({ error: "Method not allowed" })
+    };
   }
 
-  const groqKey = context.env.GROQ_API_KEY;
+  const groqKey = process.env.GROQ_API_KEY;
   if (!groqKey) {
-    return new Response(JSON.stringify({ error: "GROQ_API_KEY not set" }), { status: 500 });
+    console.error("GROQ_API_KEY not set");
+    return {
+      statusCode: 500,
+      body: JSON.stringify({ error: "GROQ_API_KEY not configured" })
+    };
   }
 
   try {
-    const { model, messages, system } = await request.json();
+    const { model, messages, system } = JSON.parse(event.body);
 
     const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
       method: "POST",
@@ -26,20 +35,29 @@ export default async (request, context) => {
     });
 
     if (!response.ok) {
-      return new Response(
-        JSON.stringify({ error: `Groq error: ${response.statusText}` }),
-        { status: response.status }
-      );
+      const errorText = await response.text();
+      console.error("Groq API error:", errorText);
+      return {
+        statusCode: response.status,
+        body: JSON.stringify({ error: `Groq error: ${response.statusText}` })
+      };
     }
 
-    return new Response(response.body, {
+    const buffer = await response.arrayBuffer();
+    return {
+      statusCode: 200,
       headers: {
         "Content-Type": "text/event-stream",
         "Cache-Control": "no-cache",
         "Connection": "keep-alive"
-      }
-    });
+      },
+      body: Buffer.from(buffer).toString()
+    };
   } catch (error) {
-    return new Response(JSON.stringify({ error: error.message }), { status: 500 });
+    console.error("Groq function error:", error);
+    return {
+      statusCode: 500,
+      body: JSON.stringify({ error: error.message })
+    };
   }
 };
