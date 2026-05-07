@@ -16,9 +16,9 @@ export function renderLanding() {
   app.className = "app-shell landing-page";
   app.innerHTML = `
     <header class="site-header">
-      <a class="site-brand" href="#landing" aria-label="Velmora.Ai home">
+      <a class="site-brand" href="#landing" aria-label="VelmoraCare.Ai home">
         ${brandMark()}
-        <span class="brand-word">Velmora.Ai</span>
+        <span class="brand-word">VelmoraCare.Ai</span>
       </a>
       <nav class="site-nav" aria-label="Landing">
         <a href="#preview">Preview</a>
@@ -40,7 +40,7 @@ export function renderLanding() {
           </div>
           <p class="hero-note">Private browser accounts today. Cloud sync later.</p>
         </div>
-        <div class="preview-device ambient-glow" id="preview" aria-label="Velmora.Ai preview">
+        <div class="preview-device ambient-glow" id="preview" aria-label="VelmoraCare.Ai preview">
           <div class="preview-head">
             <span class="preview-status">Situation strategist active</span>
             <span class="muted">Live plan</span>
@@ -67,7 +67,7 @@ export function renderLanding() {
       <div class="section-inner">
         <p class="section-kicker">Core modes</p>
         <h2 class="section-title">Designed around the exact moments people usually mishandle.</h2>
-        <p class="section-copy">Velmora.Ai does not replace therapy and does not sell optimism. It helps you understand the situation, choose your next move, and communicate with precision.</p>
+        <p class="section-copy">VelmoraCare.Ai does not replace therapy and does not sell optimism. It helps you understand the situation, choose your next move, and communicate with precision.</p>
         <div class="feature-grid">
           ${modes.map(mode => `
             <article class="feature-card">
@@ -84,7 +84,7 @@ export function renderLanding() {
         <div class="philosophy-list">
           <div class="philosophy-item"><div><h3>Practical over performative</h3><p>Every answer ends in next steps, exact language, or a decision frame.</p></div></div>
           <div class="philosophy-item"><div><h3>Warm without coddling</h3><p>The system validates what is real, then helps you act with composure.</p></div></div>
-          <div class="philosophy-item"><div><h3>Human context first</h3><p>Velmora.Ai reads subtext, power dynamics, timing, tone, and likely reactions.</p></div></div>
+          <div class="philosophy-item"><div><h3>Human context first</h3><p>VelmoraCare.Ai reads subtext, power dynamics, timing, tone, and likely reactions.</p></div></div>
         </div>
       </div>
     </section>
@@ -103,9 +103,9 @@ export function renderLanding() {
       <div class="section-inner">
         <p class="section-kicker">Start with the real situation</p>
         <h2 class="section-title">No filters. No judgment. Just you</h2>
-        <p class="section-copy">Open Velmora.Ai, choose a mode, and turn the messy version into a practical plan.</p>
+        <p class="section-copy">Open VelmoraCare.Ai, choose a mode, and turn the messy version into a practical plan.</p>
         <div class="hero-actions" style="justify-content:center">
-          <button class="button button-primary" data-route="signup">Enter Velmora.Ai</button>
+          <button class="button button-primary" data-route="signup">Enter VelmoraCare.Ai</button>
         </div>
       </div>
     </section>
@@ -123,7 +123,7 @@ export function renderLogin() {
       <div class="auth-story">
         <a class="site-brand" href="#landing">
           ${brandMark()}
-          <span class="brand-word">Velmora.Ai</span>
+          <span class="brand-word">VelmoraCare.Ai</span>
         </a>
         <div>
           <h1>You’re safe here. Start again whenever you’re ready.</h1>
@@ -133,7 +133,7 @@ export function renderLogin() {
       <div class="auth-panel-wrap">
         <div class="auth-panel">
           <h2>Welcome back</h2>
-          <p>Sign in with your Velmora.Ai account.</p>
+          <p>Sign in with your VelmoraCare.Ai account.</p>
           <form class="auth-form" id="login-form">
             <div class="field">
               <label for="username">Username</label>
@@ -152,7 +152,7 @@ export function renderLogin() {
           <div class="auth-alt">
             <button class="button button-ghost" id="discord-login" type="button">Continue with Discord</button>
           </div>
-          <p class="auth-note">Velmora.Ai stores this account, chat history, and settings in this browser's local storage. If you delete browser cookies/site data, your chat history and settings will be deleted too. They will not appear on another device or browser yet. As Velmora.Ai grows and we see your love for the website, we will add cloud sync.</p>
+          <p class="auth-note">VelmoraCare.Ai stores this account, chat history, and settings in this browser's local storage. If you delete browser cookies/site data, your chat history and settings will be deleted too. They will not appear on another device or browser yet. As VelmoraCare.Ai grows and we see your love for the website, we will add cloud sync.</p>
           <p class="auth-switch">New here? <button type="button" data-route="signup">Create an account</button></p>
         </div>
       </div>
@@ -175,7 +175,7 @@ export function renderSignup() {
       <div class="auth-story">
         <a class="site-brand" href="#landing">
           ${brandMark()}
-          <span class="brand-word">Velmora.Ai</span>
+          <span class="brand-word">VelmoraCare.Ai</span>
         </a>
         <div>
           <h1>It’s okay to not be okay. It’s not okay to go through it alone</h1>
@@ -208,7 +208,7 @@ export function renderSignup() {
           <div class="auth-alt">
             <button class="button button-ghost" id="discord-signup" type="button">Sign up with Discord</button>
           </div>
-          <p class="auth-note">Velmora.Ai stores your account, chat history, and settings in this browser's local storage. If you delete browser cookies/site data, your chat history and settings will be deleted too. They will not appear on another device or browser yet. As Velmora.Ai grows and we see your love for the website, we will add cloud sync.</p>
+          <p class="auth-note">VelmoraCare.Ai stores your account, chat history, and settings in this browser's local storage. If you delete browser cookies/site data, your chat history and settings will be deleted too. They will not appear on another device or browser yet. As VelmoraCare.Ai grows and we see your love for the website, we will add cloud sync.</p>
           <p class="auth-switch">Already have an account? <button type="button" data-route="login">Sign in</button></p>
         </div>
       </div>
@@ -242,7 +242,7 @@ export function renderDashboard() {
   app.innerHTML = `
     <div class="mobile-topbar">
       <button class="icon-button" id="open-sidebar" aria-label="Open sidebar">${icon("menu")}</button>
-      <a class="sidebar-brand" href="#app">${brandMark()}<span class="brand-word">Velmora.Ai</span></a>
+      <a class="sidebar-brand" href="#app">${brandMark()}<span class="brand-word">VelmoraCare.Ai</span></a>
       <button class="icon-button" id="mobile-new-chat" aria-label="New chat">${icon("plus")}</button>
     </div>
     <div class="dashboard-shell ${sidebarCollapsed ? "sidebar-collapsed" : ""}">
@@ -250,7 +250,7 @@ export function renderDashboard() {
       <section class="content workspace">
         <header class="workspace-header">
           <div class="workspace-title">
-            <h1>Velmora.Ai</h1>
+            <h1>VelmoraCare.Ai</h1>
             <p>Write the situation in your own words.</p>
           </div>
           <div class="workspace-actions">
@@ -276,7 +276,7 @@ function renderSidebar(session, conversations, collapsed) {
       <div class="sidebar-head">
         <a class="sidebar-brand" href="#app">
           ${brandMark()}
-          <span class="brand-word">Velmora.Ai</span>
+          <span class="brand-word">VelmoraCare.Ai</span>
         </a>
         <div class="sidebar-head-actions">
           <button class="icon-button desktop-collapse" id="toggle-sidebar" aria-label="${collapsed ? "Expand sidebar" : "Collapse sidebar"}">${icon("chevron")}</button>

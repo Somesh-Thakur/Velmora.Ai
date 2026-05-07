@@ -3,9 +3,9 @@ export const modes = [
     id: "auto",
     name: "Auto",
     short: "Detect the right help",
-    description: "Velmora.Ai reads the situation and chooses the most useful support style automatically.",
+    description: "VelmoraCare.Ai reads the situation and chooses the most useful support style automatically.",
     icon: "target",
-    starter: "Write what happened. Velmora.Ai will choose the right mode."
+    starter: "Write what happened. VelmoraCare.Ai will choose the right mode."
   },
   {
     id: "fix",

@@ -17,7 +17,7 @@ export function messageTemplate(message) {
       <div class="message-avatar">${isAssistant ? "AI" : "ME"}</div>
       <div class="message-content">
         <div class="message-meta">
-          <span class="message-name">${isAssistant ? "Velmora.Ai" : "You"}</span>
+          <span class="message-name">${isAssistant ? "VelmoraCare.Ai" : "You"}</span>
           <div class="message-actions">
             <button class="message-action" data-copy aria-label="Copy message">${icon("copy")}</button>
             ${isAssistant ? `<button class="message-action" data-regenerate aria-label="Regenerate response">${icon("refresh")}</button>` : ""}
@@ -48,7 +48,7 @@ export function typingTemplate() {
     <article class="message assistant" id="typing-message">
       <div class="message-avatar">AI</div>
       <div class="message-content">
-        <div class="message-meta"><span class="message-name">Velmora.Ai</span></div>
+        <div class="message-meta"><span class="message-name">VelmoraCare.Ai</span></div>
         <div class="message-body">
           <span class="typing-line">Thinking<span class="typing-dots"><span></span><span></span><span></span></span></span>
         </div>

@@ -114,8 +114,8 @@ a {
 }
 
 .brand-mark {
-  width: 36px;
-  height: 36px;
+  width: 46px;
+  height: 46px;
   border: 1px solid var(--color-border);
   border-radius: 50%;
   background: #0D1117;
@@ -126,7 +126,7 @@ a {
 
 .brand-word {
   font-family: var(--font-heading);
-  font-size: 26px;
+  font-size: 30px;
   line-height: 1;
 }
 

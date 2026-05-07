@@ -62,7 +62,7 @@ exports.handler = async (event, context) => {
         "Authorization": `Bearer ${openrouterKey}`,
         "Content-Type": "application/json",
         "HTTP-Referer": "https://velmoraai.netlify.app",
-        "X-Title": "Velmora AI"
+        "X-Title": "VelmoraCare AI"
       },
       body: JSON.stringify(requestBody)
     });

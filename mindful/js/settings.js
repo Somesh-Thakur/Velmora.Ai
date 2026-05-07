@@ -40,11 +40,11 @@ export function openSettings(options = {}) {
           })}
         </div>
         <div class="field">
-          <label for="preferred-name">What should Velmora.Ai call you?</label>
+          <label for="preferred-name">What should VelmoraCare.Ai call you?</label>
           <input id="preferred-name" value="${escapeAttribute(settings.preferredName)}" placeholder="Your name or nickname">
         </div>
         <div class="field">
-          <label for="communication-style">How should Velmora.Ai talk to you?</label>
+          <label for="communication-style">How should VelmoraCare.Ai talk to you?</label>
           <textarea id="communication-style" placeholder="Example: Be direct, gentle, concise, and call out assumptions.">${escapeHtml(settings.communicationStyle)}</textarea>
         </div>
         ${options.extra || ""}
