@@ -32,7 +32,7 @@ export function renderLanding() {
       <div class="hero-inner">
         <div class="hero-copy">
           <p class="hero-eyebrow">AI emotional support for real life</p>
-          <h1>Stop venting. Start fixing.</h1>
+          <h1>Understand. Heal. Grow. A Better You Everyday.</h1>
           <p class="hero-subheadline">The AI that helps you handle real situations with clarity, strategy, and emotionally intelligent communication.</p>
           <div class="hero-actions">
             <button class="button button-primary" data-route="signup">Start free</button>
