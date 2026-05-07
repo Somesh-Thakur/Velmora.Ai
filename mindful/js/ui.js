@@ -32,7 +32,7 @@ export function renderLanding() {
       <div class="hero-inner">
         <div class="hero-copy">
           <p class="hero-eyebrow">AI emotional support for real life</p>
-          <h1>Understand. Heal. Grow. A Better You Everyday.</h1>
+          <h1>Understand. Heal. Grow.</h1>
           <p class="hero-subheadline">The AI that helps you handle real situations with clarity, strategy, and emotionally intelligent communication.</p>
           <div class="hero-actions">
             <button class="button button-primary" data-route="signup">Start free</button>
@@ -102,7 +102,7 @@ export function renderLanding() {
     <section class="section cta-section">
       <div class="section-inner">
         <p class="section-kicker">Start with the real situation</p>
-        <h2 class="section-title">Handle the next message with more clarity than emotion.</h2>
+        <h2 class="section-title">No filters. No judgment. Just you</h2>
         <p class="section-copy">Open Velmora.Ai, choose a mode, and turn the messy version into a practical plan.</p>
         <div class="hero-actions" style="justify-content:center">
           <button class="button button-primary" data-route="signup">Enter Velmora.Ai</button>
@@ -126,7 +126,7 @@ export function renderLogin() {
           <span class="brand-word">Velmora.Ai</span>
         </a>
         <div>
-          <h1>Clarity when the situation feels loaded.</h1>
+          <h1>You’re safe here. Start again whenever you’re ready.</h1>
           <p>Sign in to continue your conversations, drafts, and practical action plans.</p>
         </div>
       </div>
@@ -178,7 +178,7 @@ export function renderSignup() {
           <span class="brand-word">Velmora.Ai</span>
         </a>
         <div>
-          <h1>Build a private space for real-life clarity.</h1>
+          <h1>It’s okay to not be okay. It’s not okay to go through it alone</h1>
           <p>Create an account for this browser and start handling situations with more precision.</p>
         </div>
       </div>
