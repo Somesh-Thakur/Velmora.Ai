@@ -9,11 +9,11 @@ export function composerTemplate(mode) {
       <textarea id="composer-input" placeholder="${mode.starter}" rows="3"></textarea>
       <div class="composer-footer">
         ${customSelectTemplate({
-          id: "mode-select",
-          value: mode.id,
-          className: "mode-picker",
-          options: modes.map(item => ({ value: item.id, label: item.name, description: item.short }))
-        })}
+    id: "mode-select",
+    value: mode.id,
+    className: "mode-picker",
+    options: modes.map(item => ({ value: item.id, label: item.name, description: item.short }))
+  })}
         <span class="composer-hint">Enter to send. Shift and Enter for a new line.</span>
         <button class="send-button" id="send-button" type="submit" aria-label="Send message" disabled>${icon("arrowUp")}</button>
       </div>
@@ -24,7 +24,7 @@ export function composerTemplate(mode) {
 export function emptyStateTemplate(mode) {
   return `
     <section class="chat-empty">
-      <h2>What do you want to handle?</h2>
+      <h2>What do you want to talk about?</h2>
       <p>Write the situation in your own words. Use Auto if you want VelmoraCare.Ai to choose the best way to help.</p>
     </section>
   `;
